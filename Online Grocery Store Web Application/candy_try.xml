@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<itemNumber>13</itemNumber>
+		<name>kitkat</name>
+		<category>Candy</category>
+		<subcategory>kitkat</subcategory>
+		<unitPrice>10</unitPrice>
+		<quantity>10</quantity>
+	</item>
+	<item>
+		<itemNumber>14</itemNumber>
+		<name>mars</name>
+		<category>Candy</category>
+		<subcategory>mars</subcategory>
+		<unitPrice>5</unitPrice>
+		<quantity>10</quantity>
+	</item>
+</items>

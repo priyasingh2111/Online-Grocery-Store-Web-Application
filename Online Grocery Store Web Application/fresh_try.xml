@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<itemNumber>1</itemNumber>
+		<name>beetroot</name>
+		<category>Fresh</category>
+		<subcategory>vegetables</subcategory>
+		<unitPrice>10</unitPrice>
+		<quantity>10</quantity>
+	</item>
+	<item>
+		<itemNumber>2</itemNumber>
+		<name>brussels</name>
+		<category>Fresh</category>
+		<subcategory>vegetables</subcategory>
+		<unitPrice>5</unitPrice>
+		<quantity>10</quantity>
+	</item>
+</items>

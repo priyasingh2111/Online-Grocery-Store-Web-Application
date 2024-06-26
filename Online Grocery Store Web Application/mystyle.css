@@ -1,0 +1,353 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a common background color and text styles */
+body {
+    background-image: url("img/background.jpg");
+    background-repeat: repeat;
+    background-color: bisque;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+a:hover {
+    color: rgb(161, 95, 41);
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 5px 5px gray;
+}
+
+p {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.features {
+    visibility: visible;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.feature {
+    flex: 0 0 calc(20% - 20px);
+    margin: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-color: #333;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.feature img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.feature p {
+    font-size: 16px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+form {
+    margin-top: 20px;
+    max-width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    /*margin: auto is used for horizontal alignment of block element*/
+    margin: auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    float: left;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form textarea {
+    resize: vertical; /* Allow the textarea to be resized vertically */
+}
+
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #555;
+}
+
+.features img{
+    height:150px;
+}
+
+.demo-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.demo-bg {
+opacity: 0.3;
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: auto;
+}
+
+.demo-content {
+position: relative;
+width: 100%;
+height: 150px;
+}
+.demo-content h1{
+font-family: cursive;
+font-size: 60px;
+}
+
+
+#profilePic{
+    clear: none;
+    float: right;
+    height: 150 px;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 80%;
+    margin-top: 20px;
+}
+.userInfo{
+    border: 3px solid;
+    table-layout: fixed;
+    width: 60%;
+    border-collapse: collapse;
+    padding: 10px;
+    margin-left: 20px;
+}
+.userInfo td{
+    border: 3px solid;
+    padding: 10px;
+}
+
+.userActions{
+    background-color: #333; 
+    color: white;
+    border: none;
+    font-family: sans-serif;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.userActions:hover {
+    background-color: gray
+}
+
+.actions{
+    padding-left: 20px;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 15vh;
+    margin: 0px;
+    padding: 20px;
+    padding-right: 50px;
+}
+
+/* Adjust main content width to accommodate the sidebar */
+.main-content {
+    flex-grow: 1;
+    margin-left: 20px; /* Adjust the margin as needed */
+}
+
+#contactForm{
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.main-content-img{
+    width: 50%;
+    height: 300px;
+}
+
+.discount {
+    font-weight: bold;
+    color: #e74c3c; /* Red color, you can change it to your desired color */
+}
+
+.qtyTextBox{
+    overflow: hidden; 
+    padding-right: .5em;
+}
+
+.offer{
+    font-style: oblique;
+}
+
+.radioSignUp{
+    display: block;
+    padding: 10px;
+}
+
+.copyright, .details{
+    display: inline;
+}
+
+/* Styling for regular (unvisited) links */
+.logout:link {
+    display: inline;
+    color: yellow;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+ }
+   
+ /* Styling for visited links */
+ .logout:visited {
+    color: #999;
+ }
+   
+ /* Styling for links when hovered over with the mouse */
+ .logout:hover {
+    color: brown;
+    border-color: #f00;
+ }
+   
+ /* Styling for links that have been clicked on */
+ .logout:active {
+    color: beige;
+    border-color: #0f0;
+ }
+ .categories {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20vh;
+    overflow: auto;
+}
+
+.subcategories a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.subcategories a.active {
+    background-color: #04AA6D;  
+    color: white;
+}
+
+.subcategories a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+/*     Shopping Cart     */
+
+.btn-purchase{
+    text-align: center;
+    margin: auto;
+    padding: 2%;
+    width: 50%;
+  }
+ 
+  #shopping-cart{
+    padding: 5% 5%;
+  }
+ 
+  .cart-total{
+    text-align: right;
+    font-size: 1.3rem;
+  }
+ 
+ .up-icon{
+    color: black;
+    position: fixed;
+    float: right;
+    z-index: 1;
+    left: 95%;
+    top: 85%;
+    font-size: 2rem;
+  }

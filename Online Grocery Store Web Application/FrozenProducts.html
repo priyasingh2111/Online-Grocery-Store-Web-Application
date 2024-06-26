@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="myScript.js"></script>
+    <script>
+
+         function displayItemsByCategory(category='Frozen', subcategory) {
+            document.getElementById("currentDate").innerText = getDate();
+
+            // Fetch data from the server
+            fetch('get_inventory_data.php?category=' + category+'&subcategory='+subcategory)
+                .then(response => response.json())
+                .then(data => {
+                    // Your existing code for displaying items
+                    
+                    if(data.error == 'No results found')        
+                    {
+                        alert("Inventory empty for selected subcategory");
+                    }
+                    else
+                    {
+                        var categoryItemsHTML = '<section class="features">';
+                        data.forEach(function (item) {
+                        // Adapt the code to use 'item' instead of XML
+                        // ...
+
+                        categoryItemsHTML += `
+                            <div class="feature">
+                                <img src="img/FrozenFood/${item.ItemName}.jpg" alt="${item.ItemName}">
+                                <h2>${item.ItemName}</h2>
+                                <p>Price: $${item.UnitPrice}</p>
+                                <br/>
+                                <input type="submit" value="Add to Cart" style="float: right"
+                                    onclick="addToCart('${category}', '${subcategory}','${item.ItemName}', ${item.UnitPrice}, parseInt(document.getElementById('${item.ItemName}Qty').value))"/>
+                                <div class="qtyTextBox">
+                                    <input id="${item.ItemName}Qty" type="text" style="width: 80%;" placeholder="Quantity"/>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    categoryItemsHTML += '</section>';
+                    document.getElementById('categoryItems').innerHTML = categoryItemsHTML;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function addToCart(category, subcategory, itemName, itemPrice, itemQuantity) {
+            available = false;
+            if (itemQuantity === 0) {
+                alert("Enter a value greater than 0");
+            } else {
+
+                fetch('get_inventory_data.php?category='+category +'&subcategory='+subcategory)
+                .then(response => response.json())
+                .then(data => {
+                    // Your existing code for displaying items
+                    var unavailable = false;
+                    
+                        console.log(data)
+                        if(data.error == 'No results found')        
+                        {
+                            alert("Inventory empty for selected subcategory");
+                        }
+                        else
+                        {
+                            data.forEach(function (item) {
+                            if(item.ItemName == itemName && item.QuantityInInventory >= itemQuantity)
+                            {
+                                updateInventory(itemName, itemQuantity, itemPrice);
+                                unavailable = true;
+                            }
+                        });
+                        }
+                        if(unavailable==false)
+                        {
+                            alert("Item unavailable");
+                        }
+                    
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
+        function updateInventory(itemName, itemQuantity, itemPrice) {
+            // Make a server request to update the inventory
+            fetch(`update_inventory.php?itemName=${itemName}&itemQuantity=${itemQuantity}&itemPrice=${itemPrice}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Cart updated successfully");
+                    } else {
+                        alert("Error updating inventory:", data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+    </script>
+    <title>Online Grocery Store</title>
+</head>
+<body onload="displayItemsByCategory('Frozen','all')">
+    <div class="demo-wrap">
+        <img
+          class="demo-bg"
+          src="img/banner.jpg"
+          alt=""
+        >
+        <div class="demo-content">  
+            <h1>Frozen Food</h1>
+            <p>Explore our wide array of frozen food.</p>
+            <p id="currentDate"></p>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="AboutUs.html">About Us</a></li>
+                <li><a href="MyAccount.html">My Account</a></li>
+                <li><a href="FreshProducts.html">Fresh Food</a></li>
+                <li><a href="FrozenProducts.html">Frozen Food</a></li>
+                <li><a href="Pantry.html">Pantry</a></li>
+                <li><a href="BreakfastAndCereal.html">Breakfast and Cereals</a></li>
+                <li><a href="BakingGoods.html">Baking Goods</a></li>
+                <li><a href="Snacks.html">Snacks</a></li>
+                <li><a href="Candy.html">Candy</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Cart.html">View Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <aside class="sidebar" style="font-size: 13px;">
+            <dl style="border: 2px solid white; padding: 5px;">
+                <em><dt><strong>Grocery store</strong></dt>
+                <dd style="margin-left: 0px;">A retail store that primarily retails a general range of food products, which may be fresh or packaged.</dd></em>
+            </dl>
+            <strong>Categories</strong>
+            <ol class="categories">
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','all')">Shop all</a></li>
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenBreakfast')">Frozen Breakfast</a></li>
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenDessert')">Frozen Dessert</a></li>
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenMeals')">Frozen Meal</a></li>
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenPizza')">Frozen Pizza</a></li>
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenMeat')">Frozen Meat</a></li>
+                <li class="subcategories"><a href="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenSnacks')">Frozen Snacks</a></li>
+                <li class="subcategories"><a hhref="javascript:void(0);" onclick="displayItemsByCategory('Frozen','frozenRollbacks')">Rollbacks</a></li>
+            </ol>
+        </aside>
+        <div id="categoryItems" style="width:100%;">
+            <!-- Cart items will be displayed here -->
+        </div>
+    </div>
+
+    <footer>
+        <p class="copyright">&copy; 2023 </p>
+        <a class="logout" href="logout.php">Logout</a>
+        <br/>
+        <br/>
+        <p class="details">Platform Created By: </p>
+        <p class="details">Priya Singh (PXS220067),</p>
+        <p class="details"> Nisha Deborah Philips (NXP220012)</p>
+    </footer>
+</body>
+</html>

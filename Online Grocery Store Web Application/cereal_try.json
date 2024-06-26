@@ -1,0 +1,20 @@
+{
+   "items":[
+    {
+        "itemNumber": 9,
+        "name": "applejacks",
+        "category": "BC",
+        "subcategory": "cereal",
+        "unitPrice": 10,
+        "quantity": 10
+    },
+    {
+        "itemNumber": 10,
+        "name": "wheat",
+        "category": "BC",
+        "subcategory": "bread",
+        "unitPrice": 5,
+        "quantity": 10
+    }
+   ]
+}

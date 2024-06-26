@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="myScript.js"></script>
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <div class="demo-wrap">
+        <img
+          class="demo-bg"
+          src="img/banner.jpg"
+          alt=""
+        >
+        <div class="demo-content">
+            <h1>Your cart</h1>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="AboutUs.html">About Us</a></li>
+                <li><a href="MyAccount.html">My Account</a></li>
+                <li><a href="FreshProducts.html">Fresh Food</a></li>
+                <li><a href="FrozenProducts.html">Frozen Food</a></li>
+                <li><a href="Pantry.html">Pantry</a></li>
+                <li><a href="BreakfastAndCereal.html">Breakfast and Cereals</a></li>
+                <li><a href="BakingGoods.html">Baking Goods</a></li>
+                <li><a href="Snacks.html">Snacks</a></li>
+                <li><a href="Candy.html">Candy</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Cart.html">View Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="cartContents">
+        <!-- Cart items will be displayed here -->
+    </div>
+    <input type="submit" value="Cancel" onclick="cancelShopping()"/>
+    <input type="submit" value="Shop" onclick="completeShopping()"/>
+    <script>
+        // Function to display the cart contents from session storage
+        // Update the displayCart function
+
+        function cancelShopping() {
+            fetch('cancelShopping.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Shopping canceled successfully.');
+                        displayCart(); // Refresh the cart display
+                    } else {
+                        alert('Failed to cancel shopping.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function completeShopping(){
+            fetch('completeShopping.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Shopping completed successfully.');
+                        displayCart(); // Refresh the cart display
+                    } else {
+                        alert('Failed to cancel shopping.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function displayCart() {
+            var cartContents = document.getElementById('cartContents');
+            var cartHTML = '<section class="features">';
+
+            // Fetch cart data from the server
+            fetch('get_cart_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        var cart = data.cart;
+                        var totalPrice = 0;
+
+                        if (cart.length > 0) {
+                            for (var i = 0; i < cart.length; i++) {
+                                cartHTML += '<div class="feature">';
+                                var item = cart[i];
+                                var itemTotal = item.UnitPrice * item.Quantity;
+                                totalPrice += itemTotal;
+
+                                cartHTML += '<h2>' + item.ItemName + '</h2> <p>Transaction ID:'+ item.TransactionID +'</p> <p> $' + item.UnitPrice+ ' x ' + item.Quantity + ' = $' + itemTotal + '</p></div>';
+                            }
+                        } else {
+                            cartHTML += '<p>Your cart is empty.</p>';
+                        }
+
+                        cartHTML += '</section>';
+                        cartHTML += '<hr style="border:solid 1px black;"/><center><h2>Total Price: $' + totalPrice + '</h2></center><hr style="border:solid 1px black;"/>';
+                        cartContents.innerHTML = cartHTML;
+                    } else {
+                        alert('Failed to fetch cart data.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Call the displayCart function when the page loads
+        window.onload = displayCart;
+    </script>
+</body>
+</html>

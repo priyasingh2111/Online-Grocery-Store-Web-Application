@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="myScript.js"></script>
+    <title>Register - Online Grocery Store</title>
+</head>
+<body>
+    <div class="demo-wrap">
+        <img class="demo-bg"
+             src="img/banner.jpg"
+             alt="">
+        <div class="demo-content">
+            <h1>Welcome to Our Online Grocery Store</h1>
+            <p>Explore our wide range of products for all your grocery needs.</p>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="AboutUs.html">About Us</a></li>
+                <li><a href="MyAccount.html">My Account</a></li>
+                <li><a href="FreshProducts.html">Fresh Food</a></li>
+                <li><a href="FrozenProducts.html">Frozen Food</a></li>
+                <li><a href="Pantry.html">Pantry</a></li>
+                <li><a href="BreakfastAndCereal.html">Breakfast and Cereals</a></li>
+                <li><a href="BakingGoods.html">Baking Goods</a></li>
+                <li><a href="Snacks.html">Snacks</a></li>
+                <li><a href="Candy.html">Candy</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Cart.html">View Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+
+        <div class="container">
+            <div class="main-content">
+                <section class="register-form">
+                    <h2>Register</h2>
+                    <form id="registrationForm" onsubmit="return validateForm()" action="register.php" method="post">
+                        <label for="username">User Name:</label>
+                        <input type="text" id="username" name="username" required>
+
+                        <label for="password">Password:</label>
+                        <input type="text" id="password" name="password" required>
+
+                        <label for="confirmPassword" style="float:left;">Confirm Password:</label>
+                        <input type="text" id="confirmPassword" name="confirmPassword" required>
+
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+
+                        <label for="dob">Date of Birth (MM/DD/YYYY):</label>
+                        <input type="text" id="dob" name="dob" placeholder="MM/DD/YYYY" required>
+
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" id="phone" name="phone" placeholder="XXXXXXXXXX" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="address">Address:</label>
+                        <textarea id="address" name="address" required></textarea>
+
+                        <input type="submit" value="Register">
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <footer>
+            <p class="copyright">&copy; 2023 </p>
+            <a class="logout" href="logout.php">Logout</a>
+            <br />
+            <br />
+            <p class="details">First name: Nisha Deborah</p>
+            <p class="details">Last name: Philips</p>
+            <p class="details">Net Id: NXP220012</p>
+        </footer>
+
+        <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var dob = document.getElementById("dob").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+
+            // Validate required fields
+            if (!username || !password || !confirmPassword || !firstName || !lastName || !dob || !email || !address) {
+                alert("All fields are required");
+                return false;
+            }
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            // Validate password length
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters");
+                return false;
+            }
+
+            // Validate date of birth format (MM/DD/YYYY)
+            var dobRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+            if (!dob.match(dobRegex)) {
+                alert("Date of birth must be in MM/DD/YYYY format");
+                return false;
+            }
+
+            // Validate email format
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            // If all validations pass, you can proceed with form submission
+            // For now, I'm just showing an alert, you should replace this with actual form submission code
+            alert("Registration successful!");
+            return true;
+        }
+    </script>
+
+</body>
+</html>

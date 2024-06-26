@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="myScript.js"></script>
+    <title>Online Grocery Store</title>
+</head>
+<body>
+    <script>
+        function validateForm()
+        {
+            let firstName = document.getElementById("fname").value;
+            let lastName = document.getElementById("lname").value;
+            var phoneNumber = document.getElementById("pno").value;
+            var message = document.getElementById("message").value;
+            var email = document.getElementById("email").value;
+            let regexOnlyAlpha = /^[a-zA-Z]+$/; 
+            let regexCapital = /[A-Z]/;
+            var regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+            if((firstName==lastName) || (!regexOnlyAlpha.test(firstName) && !regexOnlyAlpha.test(lastName))
+            || (!regexCapital.test(firstName.charAt(0)) && !regexCapital.test(lastName.charAt(0)))
+            || (phoneNumber.match(/^\(\d{3}\) \d{3}-\d{4}$/)) || (message.length<10) 
+            ||!(regexEmail.test(email)))
+            {
+                alert("Invalid input");
+            }
+        }
+    </script>
+    <div class="demo-wrap">
+        <img
+          class="demo-bg"
+          src="img/banner.jpg"
+          alt=""
+        >
+        <div class="demo-content">
+            <h1>Contact us</h1>
+            <p>Have questions or feedback? Send us a message!</p>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="AboutUs.html">About Us</a></li>
+                <li><a href="index.html">User Login</a></li>
+                <li><a href="MyAccount.html">My Account</a></li>
+                <li><a href="FreshProducts.html">Fresh Food</a></li>
+                <li><a href="FrozenProducts.html">Frozen Food</a></li>
+                <li><a href="Pantry.html">Pantry</a></li>
+                <li><a href="BreakfastAndCereal.html">Breakfast and Cereals</a></li>
+                <li><a href="BakingGoods.html">Baking Goods</a></li>
+                <li><a href="Snacks.html">Snacks</a></li>
+                <li><a href="Candy.html">Candy</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Cart.html">View Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <div class="container">
+    
+            <aside class="sidebar" style="font-size: 13px;">
+                <dl>
+                    <em><dt><strong>Grocery store</strong></dt>
+                    <dd style="margin-left: 5px;">A retail store that primarily retails a general range of food products, which may be fresh or packaged.</dd></em>
+                </dl>
+                Did you know there are over 38,300 grocery retailers in the U.S.? That breaks down to a possible 766 grocery stores in each state!
+    
+                At face value, grocery stores don’t feel overwhelmingly competitive.    
+                
+                That, combined with a few other niche industry needs, presents a unique set of marketing challenges for all grocery stores.
+                <ol>
+                    <li>How to gain customer loyalty</li>
+                    <li>How to convert new customers into supporters</li>
+                    <li>How to remain accessible and competitive</li>
+                </ol>
+            </aside>
+            <div class="main-content">    
+                <section class="features">
+                    <div >
+                        <form id="contactForm" action="" method="" onsubmit="return validateForm()">
+                            <label for="fname">First Name:</label>
+                            <input type="text" id="fname" name="fname" required>
+
+                            <label for="lname">Last Name:</label>
+                            <input type="text" id="lname" name="lname" required>
+            
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="pno">Phone number:</label>
+                            <input type="text" id="pno" name="pno" required>
+
+                            <strong><em>Gender:</em></strong>
+                            <div class="radioSignUp">
+                                <label for="male">Male</label>
+                                <input type="radio" id="male" name="gender" value="male" required/>
+                            </div>
+                            <div class="radioSignUp">
+                                <label for="female">Female</label>
+                                <input type="radio" id="female" name="gender" value="female" required/>
+                            </div>
+
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" name="address" >
+            
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+            
+                            <strong><em>Sign up for promotions:</em></strong>
+                            <div class="radioSignUp">
+                                <label for="Yes">Yes</label>
+                                <input type="radio" id="Yes" name="signUp" value="Yes" />
+                            </div>
+                            <div class="radioSignUp">
+                                <label for="No">No</label>
+                                <input type="radio" id="No" name="signUp" value="No" />
+                            </div>
+
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                    </div>
+            </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p class="copyright">&copy; 2023 </p>
+        <a class="logout" href="logout.php">Logout</a>
+        <br/>
+        <br/>
+        <p class="details">Platform Created By: </p>
+        <p class="details">Priya Singh (PXS220067),</p>
+        <p class="details"> Nisha Deborah Philips (NXP220012)</p>
+    </footer>
+</body>
+</html>

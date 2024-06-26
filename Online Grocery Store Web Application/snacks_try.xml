@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<itemNumber>17</itemNumber>
+		<name>cheetos</name>
+		<category>Snacks</category>
+		<subcategory>cheetos</subcategory>
+		<unitPrice>10</unitPrice>
+		<quantity>10</quantity>
+	</item>
+	<item>
+		<itemNumber>18</itemNumber>
+		<name>lays</name>
+		<category>Snacks</category>
+		<subcategory>lays</subcategory>
+		<unitPrice>5</unitPrice>
+		<quantity>10</quantity>
+	</item>
+</items>

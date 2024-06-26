@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+	<item>
+		<itemNumber>7</itemNumber>
+		<name>fish</name>
+		<category>Frozen</category>
+		<subcategory>frozneMeat</subcategory>
+		<unitPrice>10</unitPrice>
+		<quantity>10</quantity>
+	</item>
+	<item>
+		<itemNumber>8</itemNumber>
+		<name>uncrustables</name>
+		<category>Frozen</category>
+		<subcategory>frozenSnacks</subcategory>
+		<unitPrice>5</unitPrice>
+		<quantity>10</quantity>
+	</item>
+</items>

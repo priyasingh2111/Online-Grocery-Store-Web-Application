@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="myScript.js"></script>
+    <title>Login User/Admin</title>
+    <style>
+    .login-container {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
+                    padding: 20px;
+                    border-radius: 10px;
+                    text-align: center;
+                    color:black;
+                }
+    .login-container input {
+                            width: 100%;
+                            padding: 8px;
+                            margin-bottom: 16px;
+                            box-sizing: border-box;
+                        }
+    </style>
+</head>
+<body>
+    <div class="demo-wrap">
+        <img class="demo-bg"
+             src="img/banner.jpg"
+             alt="">
+    </div>
+    <header>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form action="login.php" method="post">
+                <label for="username">Username:</label>
+                <input type="text" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" required>
+                <br>
+                <input type="submit" value="Login">
+                <a href="Registration.html">Do not have an account. Please register</a>
+            </form>
+        </div>
+    </header>
+        
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="myScript.js"></script>
+    <script>
+        // Fetch and display transactions when the page loads
+        window.onload = function () {
+            fetch('get_transactions.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayTransactions(data);
+                    } else {
+                        alert('Failed to fetch transactions.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        };
+
+        function logout() {
+            // Fetch and execute the logout PHP script
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Redirect to the login page
+                        window.location.href = 'login.html';
+                    } else {
+                        alert('Logout failed. Please try again.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Function to display transactions
+        function displayTransactions(transactions) {
+            var transactionsContainer = document.getElementById('transactionsContainer');
+            var transactionsHTML = '<h2>Transactions</h2><section class="features">';
+
+            if (transactions.data.length > 0) {
+                for (var i = 0; i < transactions.data.length; i++) {
+                    transactionsHTML += '<div class="feature">';
+                    var transaction = transactions.data[i];
+
+                    transactionsHTML += '<h2>Transaction ID: ' + transaction.TransactionID + '</h2>';
+                    transactionsHTML += '<p>Status: ' + transaction.TransactionStatus + '</p>';
+                    transactionsHTML += '<p>Date: ' + transaction.TransactionDate + '</p>';
+                    transactionsHTML += '<p>Total Price: $' + transaction.TotalPrice + '</p>';
+
+                    if (transaction.TransactionStatus !== 'Shopped') {
+                        transactionsHTML += '<input type="button" value="Cancel Transaction" onclick="cancelTransaction(' + transaction.TransactionID + ')"/>';
+                    }
+
+                    transactionsHTML += '</div>';
+                }
+            } else {
+                transactionsHTML += '<p>No transactions found.</p>';
+            }
+
+            transactionsHTML += '</section>';
+            transactionsContainer.innerHTML = transactionsHTML;
+        }
+
+        function fetchTransactions(period) {
+            fetch('get_transactions.php?period=' + period)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayTransactions(data);
+                    } else {
+                        alert('Failed to fetch transactions.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Function to cancel a transaction
+        function cancelTransaction(transactionID) {
+            // Call your cancel transaction API endpoint with the transactionID
+            fetch('cancel_transaction.php?transactionID='+transactionID)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.success) {
+                        // Transaction cancelled successfully, refresh the transactions
+                        window.location.reload();
+                    } else {
+                        alert('Failed to cancel transaction.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+    <title>Online Grocery Store</title>
+</head>
+<body>
+    <div class="demo-wrap">
+        <img
+          class="demo-bg"
+          src="img/banner.jpg"
+          alt=""
+        >
+        <div class="demo-content">
+            <h1>User Information</h1>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="AboutUs.html">About Us</a></li>
+                <li><a href="MyAccount.html">My Account</a></li>
+                <li><a href="FreshProducts.html">Fresh Food</a></li>
+                <li><a href="FrozenProducts.html">Frozen Food</a></li>
+                <li><a href="Pantry.html">Pantry</a></li>
+                <li><a href="BreakfastAndCereal.html">Breakfast and Cereals</a></li>
+                <li><a href="BakingGoods.html">Baking Goods</a></li>
+                <li><a href="Snacks.html">Snacks</a></li>
+                <li><a href="Candy.html">Candy</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Cart.html">View Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+    <div class="container">
+    
+        <aside class="sidebar" style="font-size: 13px;">
+            <dl>
+                <em><dt><strong>Grocery store</strong></dt>
+                <dd style="margin-left: 5px;">A retail store that primarily retails a general range of food products, which may be fresh or packaged.</dd></em>
+            </dl>
+            Did you know there are over 38,300 grocery retailers in the U.S.? That breaks down to a possible 766 grocery stores in each state!
+
+            At face value, grocery stores don’t feel overwhelmingly competitive.    
+            
+            That, combined with a few other niche industry needs, presents a unique set of marketing challenges for all grocery stores.
+            <ol>
+                <li>How to gain customer loyalty</li>
+                <li>How to convert new customers into supporters</li>
+                <li>How to remain accessible and competitive</li>
+            </ol>
+        </aside>
+        <div class="main-content">    
+            <div class="userContainer">
+                <h2>Welcome, Debbie</h2>
+                <div class="account-details">
+                    <div class="profile-picture">
+                        <img id="profilePic" src="img/profile.jpg" alt="Profile Picture">
+                    </div>
+                    <div class="user-info">
+                        <h3>User Information</h3>
+                        <table class="userInfo">
+                            <tr>
+                                <td><strong>Username</strong></td>
+                                <td><input type="text" value="debbie123" readonly></input></td>
+                            </tr> 
+                            <tr>
+                                <td><strong>Email</strong></td>
+                                <td><input type="text" value="debbie123@gmail.com" readonly></input></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Member Since</strong></td>
+                                <td><input type="text" value="January 1, 2023" readonly></input></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="additional-details">
+                    <h3>Additional Account Details</h3>
+                    <table class="userInfo">
+                        <tr>
+                            <td><strong>Account Type</strong></td>
+                            <td><input type="text" value="Premium" readonly></input></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subscription Status</strong></td>
+                            <td><input type="text" value="Active" readonly></input></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Payment Method</strong></td>
+                            <td><input type="text" value="Visa **** **** **** 1234" readonly></input></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>        
+            <!-- Add a dropdown for selecting time period -->
+            <label for="timePeriod">Select Time Period:</label>
+            <select id="timePeriod" onchange="fetchTransactions(this.value)">
+                <option value="currentMonth">Current Month</option>
+                <option value="last3Months">Last 3 Months</option>
+                <option value="all">All</option>
+                <!-- Add other options as needed -->
+            </select>
+            <div id="transactionsContainer">
+                <!-- Transactions will be displayed here -->
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <p class="copyright">&copy; 2023 </p>
+        <a class="logout" href="logout.php">Logout</a>
+        <br/>
+        <br/>
+        <p class="details">Platform Created By: </p>
+        <p class="details">Priya Singh (PXS220067),</p>
+        <p class="details"> Nisha Deborah Philips (NXP220012)</p>
+    </footer>
+</body>
+</html>
