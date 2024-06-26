@@ -37,7 +37,7 @@ git clone https://github.com/priyasingh2111/Online-Grocery-Store-Web-Application
 ```
 
 3. Move Files to WAMP Directory:
-Move the cloned files from 'Online Grocery Store Web Application' folder to the www directory of your WAMP installation, usually found at C:\wamp\www.
+Move the cloned files from 'Online Grocery Store Web Application' folder to the www directory of your WAMP installation, usually found at 'C:\wamp\www'.
 
 4. Start WAMP Server:
 Launch the WAMP server and ensure it is running.
@@ -67,7 +67,7 @@ Add, edit, or delete products.
 View product inventory and orders and other reports.
 
 ## User Guide
-![User Info]()
+![User Info](https://github.com/priyasingh2111/Online-Grocery-Store-Web-Application/blob/d208055912e5436ff1ac9373a57f7948da755c7e/gr2.png)
 
 1. Access the Application:
 Navigate to [http://localhost/online-grocery-store-web-application/index.html](http://localhost/online-grocery-store-web-application/index.html) .
