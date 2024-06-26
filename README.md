@@ -1,4 +1,5 @@
 # Online Grocery Store Web Application
+![Grocery Store Image]()
 
 ## Table of Contents
 - Introduction
@@ -7,6 +8,7 @@
 - Installation
 - Database Configuration
 - Admin Dashboard
+- User Guide
 
 ## Introduction
 Welcome to the Online Grocery Store web app! This application allows users to browse and purchase groceries in a category-based format. It also includes an admin dashboard for managing products, categories, and orders.
@@ -63,3 +65,18 @@ Password: admin123
 - Manage Products:
 Add, edit, or delete products.
 View product inventory and orders and other reports.
+
+##User Guide
+![User Info]()
+
+1. Access the Application:
+Navigate to [http://localhost/online-grocery-store-web-application/index.html](http://localhost/online-grocery-store-web-application/index.html) .
+
+2. Register and Login:
+Users can register for an account and log in to the application.
+
+3. Browse Products:
+Explore different categories and add items to your cart.
+
+4. Checkout:
+Review the cart and proceed to checkout by providing the necessary details.
