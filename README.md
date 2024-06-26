@@ -1,5 +1,5 @@
 # Online Grocery Store Web Application
-![Grocery Store Image]()
+![Grocery Store Image](https://github.com/priyasingh2111/Online-Grocery-Store-Web-Application/blob/df7a69da10671f4e4e3359df3494f82a2fbdb2e4/gr1.png)
 
 ## Table of Contents
 - Introduction
@@ -66,7 +66,7 @@ Password: admin123
 Add, edit, or delete products.
 View product inventory and orders and other reports.
 
-##User Guide
+## User Guide
 ![User Info]()
 
 1. Access the Application:
