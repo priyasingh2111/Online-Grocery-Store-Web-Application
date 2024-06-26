@@ -27,23 +27,23 @@ Welcome to the Online Grocery Store web app! This application allows users to br
 ## Installation
 
 1. Install WAMP Server:
-Download and install WAMP server from [here] (https://sourceforge.net/projects/wampserver/).
+Download and install WAMP server from [here](https://sourceforge.net/projects/wampserver/).
 
-2.Clone the Repository:
+2. Clone the Repository:
 ```
 git clone https://github.com/priyasingh2111/Online-Grocery-Store-Web-Application.git
 ```
 
-3.Move Files to WAMP Directory:
+3. Move Files to WAMP Directory:
 Move the cloned files from 'Online Grocery Store Web Application' folder to the www directory of your WAMP installation, usually found at C:\wamp\www.
 
-4.Start WAMP Server:
+4. Start WAMP Server:
 Launch the WAMP server and ensure it is running.
 
 ## Database Configuration
 
-1.Create Database:
-Open PHPMyAdmin at [http://localhost/phpmyadmin] (http://localhost/phpmyadmin).
+1. Create Database:
+Open PHPMyAdmin at [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 Create a new database named grocerystore.
 
 2. Populate some data
